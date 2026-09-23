@@ -1,0 +1,10 @@
+from __future__ import annotations
+
+from typing import TypeAlias
+
+from ..click_stack_bar_builder_chart_config import ClickStackBarBuilderChartConfig, ClickStackBarBuilderChartConfigDict
+from ..click_stack_bar_raw_sql_chart_config import ClickStackBarRawSqlChartConfig, ClickStackBarRawSqlChartConfigDict
+
+ClickStackBarChartConfig: TypeAlias = ClickStackBarBuilderChartConfig | ClickStackBarRawSqlChartConfig
+
+ClickStackBarChartConfigDict: TypeAlias = ClickStackBarBuilderChartConfigDict | ClickStackBarRawSqlChartConfigDict

@@ -1,0 +1,35 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Final, TypeAlias
+
+from ..core import ErrorMapper, HttpResponse, RawError, decode_json
+from ..models.v1_organizations_services_snapshot_configuration400_error1 import (
+    V1OrganizationsServicesSnapshotConfiguration400Error1,
+)
+from ..models.v1_organizations_services_snapshot_configuration500_error1 import (
+    V1OrganizationsServicesSnapshotConfiguration500Error1,
+)
+
+SnapshotConfigurationUpdateErrorBody: TypeAlias = (
+    V1OrganizationsServicesSnapshotConfiguration400Error1
+    | V1OrganizationsServicesSnapshotConfiguration500Error1
+    | RawError
+)
+
+
+@dataclass(frozen=True, slots=True)
+class _SnapshotConfigurationUpdateError:
+    def map(self, response: HttpResponse) -> SnapshotConfigurationUpdateErrorBody:
+        match response.status_code:
+            case 400:
+                return decode_json[V1OrganizationsServicesSnapshotConfiguration400Error1](response)
+            case 500:
+                return decode_json[V1OrganizationsServicesSnapshotConfiguration500Error1](response)
+            case _:
+                return RawError(response)
+
+
+snapshot_configuration_update_error_mapper: Final[
+    ErrorMapper[SnapshotConfigurationUpdateErrorBody]
+] = _SnapshotConfigurationUpdateError()

@@ -1,0 +1,10 @@
+from __future__ import annotations
+
+from typing import TypeAlias
+
+from ..click_stack_alert_channel_email import ClickStackAlertChannelEmail, ClickStackAlertChannelEmailDict
+from ..click_stack_alert_channel_webhook import ClickStackAlertChannelWebhook, ClickStackAlertChannelWebhookDict
+
+ClickStackAlertChannel: TypeAlias = ClickStackAlertChannelEmail | ClickStackAlertChannelWebhook
+
+ClickStackAlertChannelDict: TypeAlias = ClickStackAlertChannelEmailDict | ClickStackAlertChannelWebhookDict

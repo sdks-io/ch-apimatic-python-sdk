@@ -1,0 +1,10 @@
+from __future__ import annotations
+
+from typing import TypeAlias
+
+from ..click_stack_pie_builder_chart_config import ClickStackPieBuilderChartConfig, ClickStackPieBuilderChartConfigDict
+from ..click_stack_pie_raw_sql_chart_config import ClickStackPieRawSqlChartConfig, ClickStackPieRawSqlChartConfigDict
+
+ClickStackPieChartConfig: TypeAlias = ClickStackPieBuilderChartConfig | ClickStackPieRawSqlChartConfig
+
+ClickStackPieChartConfigDict: TypeAlias = ClickStackPieBuilderChartConfigDict | ClickStackPieRawSqlChartConfigDict
